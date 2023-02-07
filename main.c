@@ -204,6 +204,8 @@ int main(int argc, char** argv) {
         return -1;
     }
 
+    
+
     SDL_UpdateTexture(texture, NULL, pixels, width * 4);
 
     //Top left vertex
@@ -251,11 +253,7 @@ int main(int argc, char** argv) {
     char VolumeShow[20];
     bool IsPlaying = true;
 
-
-    //Seek
-    Uint8* audio_pos; // global pointer to the audio buffer to be played
-    Uint32 audio_len; // remaining length of the sample we have to play
-
+    
     int running = 1;
     while (running) {
         SDL_Event event;
@@ -272,30 +270,29 @@ int main(int argc, char** argv) {
         //Texture
         SDL_RenderGeometry(renderer, texture, vertex, 4, index, 6);
 
-        SDL_RenderPresent(renderer);
 
 
         //Ball
         // Update the ball's position
-        x += xVel;
-        y += yVel;
+        //x += xVel;
+        //y += yVel;
 
-        // Check for wall collisions
-        if (x < 0 || x > cornersize - ballsize * 2) {
-            xVel = -xVel;
-        }
-        if (y < 0 || y > cornersize - ballsize) {
-            yVel = -yVel;
-        }
+        //// Check for wall collisions
+        //if (x < 0 || x > cornersize - ballsize * 2) {
+        //    xVel = -xVel;
+        //}
+        //if (y < 0 || y > cornersize - ballsize) {
+        //    yVel = -yVel;
+        //}
 
-        // Clear the screen
-        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-        //SDL_RenderClear(renderer);
+        //// Clear the screen
+        //SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        ////SDL_RenderClear(renderer);
 
-        // Draw the ball
-        SDL_Rect ball = { x - ballsize * -0.5, y - ballsize * -0.5, ballsize, ballsize };
-        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-        SDL_RenderFillRect(renderer, &ball);
+        //// Draw the ball
+        //SDL_Rect ball = { x - ballsize * -0.5, y - ballsize * -0.5, ballsize, ballsize };
+        //SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+        //SDL_RenderFillRect(renderer, &ball);
 
         // Update the screen
         SDL_RenderPresent(renderer);
@@ -332,6 +329,7 @@ int main(int argc, char** argv) {
                         printf("Failed to play music! SDL_mixer Error: %s\n", Mix_GetError());
                         return 1;
                     }
+                    IsPlaying = true;
 
                 }
                 }
