@@ -297,7 +297,7 @@ int main(int argc, char** argv) {
         // Update the screen
         SDL_RenderPresent(renderer);
 
-        if (nk_begin(ctx, "List of song in the same folder", nk_rect(cornersize * 2, 0, 300, 300), NK_WINDOW_BORDER)) {
+        if (nk_begin(ctx, "List of song in the same folder", nk_rect(cornersize * 2 +5, 0, 300-5, 300), NK_WINDOW_BORDER)) {
             /* fixed widget pixel width */
 
 
@@ -339,7 +339,7 @@ int main(int argc, char** argv) {
         }
         nk_end(ctx);
 
-        if (nk_begin(ctx, "Ale Music Player", nk_rect(cornersize, 0, 300, 300),
+        if (nk_begin(ctx, "Ale Music Player", nk_rect(cornersize+5, 0, 300, 300),
             NK_WINDOW_BORDER)) {
             /* fixed widget pixel width */
             nk_layout_row_static(ctx, 30, 80, 1);
